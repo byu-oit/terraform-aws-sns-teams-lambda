@@ -1,7 +1,7 @@
 terraform {
-  required_version = ">= 0.14.11"
+  required_version = ">= 1.0"
   required_providers {
-    aws = "~> 3.0"
+    aws = ">= 6.21"
   }
 }
 
@@ -18,5 +18,5 @@ module "ci_test" {
 }
 
 module "acs" {
-  source = "github.com/byu-oit/terraform-aws-acs-info?ref=v3.2.0"
+  source = "github.com/byu-oit/terraform-aws-acs-info?ref=v4.1.0"
 }
