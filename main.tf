@@ -1,7 +1,7 @@
 terraform {
   required_version = ">= 0.14.11"
   required_providers {
-    aws = ">= 3.0"
+    aws = ">= 6.21"
   }
 }
 
@@ -13,7 +13,7 @@ resource "aws_lambda_function" "sns_to_teams" {
   function_name    = "${var.app_name}-sns-to-teams"
   filename         = local.filename
   handler          = "index.handler"
-  runtime          = "nodejs14.x"
+  runtime          = "nodejs24.x"
   role             = aws_iam_role.sns_to_teams.arn
   timeout          = var.timeout
   memory_size      = var.memory_size
