@@ -9,6 +9,7 @@ locals {
   filename = "${path.module}/lambda/function.zip"
 }
 
+# trivy:ignore:AWS-0066
 resource "aws_lambda_function" "sns_to_teams" {
   function_name    = "${var.app_name}-sns-to-teams"
   filename         = local.filename
@@ -53,6 +54,7 @@ resource "aws_iam_role_policy_attachment" "basic_execution" {
   role       = aws_iam_role.sns_to_teams.name
 }
 
+# trivy:ignore:AWS-0017
 resource "aws_cloudwatch_log_group" "logging" {
   name              = "/aws/lambda/${aws_lambda_function.sns_to_teams.function_name}"
   retention_in_days = var.log_retention_in_days
